@@ -60,3 +60,17 @@ def test_search_task_by_assignee():
       assert len(result) == 1
       assert result[0]["assignee"] == "Rina"
 
+def add_task(tasks, title, description, priority, assignee):
+    new_id = 1 if len(tasks) == 0 else max(task["id"] for task in tasks) + 1
+
+    new_task = {
+        "id": new_id,
+        "title": title,
+        "description": description,
+        "status": "todo",
+        "priority": priority,
+        "assignee": assignee
+    }
+
+    tasks.append(new_task)
+    return tasks  
